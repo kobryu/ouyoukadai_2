@@ -1,0 +1,21 @@
+<h1>Users#follows</h1>
+<p>Find me in app/views/users/follows.html.erb</p>
+<% @users.each do |user| %>
+  <tr>
+    <th>イメージ画像</th>
+    <th><%= image_tag user.get_profile_image, size: '50x50' %></th>
+  </tr>
+  <tr>
+  <th>Name</th>
+  <th><%= user.name %></th>
+  </tr>
+  <tr>
+  <th>フォロー数</th>
+  <th><%= user.followings.count %></th>
+  </tr>
+  <th>フォロワーー数</th>
+  <th><%= user.followers.count %></th>
+  </tr>
+  <tr><%= link_to 'Show', user, class: "user_#{user.id}" %></tr>
+
+<% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   get 'post_comments/create'
   get 'post_comments/destroy'
   get 'favorites/create'
@@ -13,7 +15,13 @@ Rails.application.routes.draw do
 
 
 
-  resources :users, only: [:index,:show,:edit,:update]
+  resources :users, only: [:index,:show,:edit,:update] do
+    
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member # 追加
+    get :followers, on: :member # 追加
+
+  end
 
   get "home/about"=>"homes#about"
 
