@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:index,:show,:edit,:update] do
-    
+
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member # 追加
     get :followers, on: :member # 追加
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   get "home/about"=>"homes#about"
+  get "search" => "searches#search"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
